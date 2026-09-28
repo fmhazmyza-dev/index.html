@@ -11,7 +11,7 @@
 
   <style>
     :root {
-      --bg-color: #eaf0f6;
+      --bg-color: #f2f5f8;
       --card-bg: #ffffff;
       --primary-blue: #3b5998;
       --accent-blue: #5b7bb4;
@@ -105,7 +105,7 @@
     /* Section Utama */
     .page-section {
       min-height: 100vh;
-      padding: 40px 20px 85px;
+      padding: 35px 18px 85px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -113,17 +113,16 @@
       text-align: center;
       position: relative;
       background-color: var(--bg-color);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
-    /* KARTU MEWAH DENGAN BINGKAI EMAS DAN ORNAMEN SISI */
+    /* KARTU DENGAN BINGKAI DAN ORNAMEN FLORAL */
     .luxury-card {
       position: relative;
       width: 100%;
       background: #ffffff;
       border: 2px solid var(--gold-accent);
       border-radius: 16px;
-      padding: 35px 20px 25px;
+      padding: 40px 18px 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       overflow: hidden;
     }
@@ -131,88 +130,59 @@
     .luxury-card::after {
       content: '';
       position: absolute;
-      inset: 13px;
-      border: 1px solid rgba(212, 175, 55, 0.18);
+      inset: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
       border-radius: 10px;
       pointer-events: none;
     }
 
-    /* Garis Putus-putus Dalam Card */
-    .luxury-card::before {
-      content: '';
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      right: 6px;
-      bottom: 6px;
-      border: 1px dashed var(--primary-blue);
-      border-radius: 12px;
-      pointer-events: none;
-      opacity: 0.4;
-    }
-
-    /* ORNAMEN BUNGA SUDUT */
+    /* --- ORNAMEN BUNGA SUDUT REALISTIS --- */
     .floral-corner {
       position: absolute;
-      width: 92px;
-      height: 92px;
+      width: 110px;
+      height: 110px;
       pointer-events: none;
-      z-index: 2;
-      opacity: 0.95;
+      z-index: 5;
       background-repeat: no-repeat;
       background-size: contain;
     }
 
     .floral-top-left {
-      top: 4px;
-      left: 4px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M5 72 C18 52 27 37 48 18'/%3E%3Cpath d='M18 53 C12 43 13 34 20 27'/%3E%3Cpath d='M29 39 C23 28 27 19 35 13'/%3E%3Cpath d='M11 62 C24 60 31 66 33 76'/%3E%3Cpath d='M26 45 C38 43 45 49 46 58'/%3E%3C/g%3E%3Cg fill='%23d4af37'%3E%3Ccircle cx='19' cy='27' r='3'/%3E%3Ccircle cx='35' cy='13' r='3'/%3E%3Ccircle cx='47' cy='18' r='3.5'/%3E%3C/g%3E%3Cg fill='white' stroke='%23d4af37' stroke-width='1.4'%3E%3Cpath d='M19 27 C11 22 10 13 19 10 C27 14 26 22 19 27Z'/%3E%3Cpath d='M19 27 C26 21 33 22 35 30 C28 34 22 32 19 27Z'/%3E%3Cpath d='M35 13 C28 7 29 1 36 0 C43 4 42 10 35 13Z'/%3E%3Cpath d='M35 13 C41 8 49 10 50 17 C43 20 38 18 35 13Z'/%3E%3Cpath d='M47 18 C40 12 41 6 49 4 C55 8 54 14 47 18Z'/%3E%3Cpath d='M47 18 C54 14 61 17 61 24 C54 27 49 24 47 18Z'/%3E%3C/g%3E%3C/svg%3E");
+      top: 0;
+      left: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23d4af37'/%3E%3Cstop offset='100%25' stop-color='%23aa820a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke='url(%23g1)' stroke-width='1.5'%3E%3Cpath d='M0,40 Q30,38 45,15 Q55,0 60,0'/%3E%3Cpath d='M0,65 Q45,60 65,30 Q75,15 80,0'/%3E%3Cpath d='M0,90 Q60,80 85,45 Q100,20 105,0'/%3E%3C/g%3E%3Cpath d='M25,25 C15,10 5,15 0,30 C15,35 20,45 25,25 Z' fill='%23bcd0e8' opacity='0.7'/%3E%3Cpath d='M40,15 C30,0 20,5 15,20 C30,25 35,35 40,15 Z' fill='%235b7bb4' opacity='0.6'/%3E%3Ccircle cx='20' cy='20' r='12' fill='%23ffffff' stroke='url(%23g1)' stroke-width='1.5'/%3E%3Ccircle cx='20' cy='20' r='8' fill='url(%23g1)' opacity='0.8'/%3E%3Cpath d='M20,5 C23,12 23,28 20,35 M5,20 C12,23 28,23 35,20' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E");
     }
 
     .floral-bottom-right {
-      right: 4px;
-      bottom: 4px;
+      bottom: 0;
+      right: 0;
       transform: rotate(180deg);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M5 72 C18 52 27 37 48 18'/%3E%3Cpath d='M18 53 C12 43 13 34 20 27'/%3E%3Cpath d='M29 39 C23 28 27 19 35 13'/%3E%3Cpath d='M11 62 C24 60 31 66 33 76'/%3E%3Cpath d='M26 45 C38 43 45 49 46 58'/%3E%3C/g%3E%3Cg fill='%23d4af37'%3E%3Ccircle cx='19' cy='27' r='3'/%3E%3Ccircle cx='35' cy='13' r='3'/%3E%3Ccircle cx='47' cy='18' r='3.5'/%3E%3C/g%3E%3Cg fill='white' stroke='%23d4af37' stroke-width='1.4'%3E%3Cpath d='M19 27 C11 22 10 13 19 10 C27 14 26 22 19 27Z'/%3E%3Cpath d='M19 27 C26 21 33 22 35 30 C28 34 22 32 19 27Z'/%3E%3Cpath d='M35 13 C28 7 29 1 36 0 C43 4 42 10 35 13Z'/%3E%3Cpath d='M35 13 C41 8 49 10 50 17 C43 20 38 18 35 13Z'/%3E%3Cpath d='M47 18 C40 12 41 6 49 4 C55 8 54 14 47 18Z'/%3E%3Cpath d='M47 18 C54 14 61 17 61 24 C54 27 49 24 47 18Z'/%3E%3C/g%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23d4af37'/%3E%3Cstop offset='100%25' stop-color='%23aa820a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke='url(%23g1)' stroke-width='1.5'%3E%3Cpath d='M0,40 Q30,38 45,15 Q55,0 60,0'/%3E%3Cpath d='M0,65 Q45,60 65,30 Q75,15 80,0'/%3E%3Cpath d='M0,90 Q60,80 85,45 Q100,20 105,0'/%3E%3C/g%3E%3Cpath d='M25,25 C15,10 5,15 0,30 C15,35 20,45 25,25 Z' fill='%23bcd0e8' opacity='0.7'/%3E%3Cpath d='M40,15 C30,0 20,5 15,20 C30,25 35,35 40,15 Z' fill='%235b7bb4' opacity='0.6'/%3E%3Ccircle cx='20' cy='20' r='12' fill='%23ffffff' stroke='url(%23g1)' stroke-width='1.5'/%3E%3Ccircle cx='20' cy='20' r='8' fill='url(%23g1)' opacity='0.8'/%3E%3Cpath d='M20,5 C23,12 23,28 20,35 M5,20 C12,23 28,23 35,20' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E");
     }
 
-    .floral-accent {
-      position: absolute;
-      left: 50%;
-      bottom: 17px;
-      transform: translateX(-50%);
-      width: 150px;
-      height: 24px;
+    /* ORNAMEN SULUR / DEKORASI BAWAH (AMAN TIDAK MENUTUP TEKS) */
+    .floral-accent-divider {
+      width: 100%;
+      height: 30px;
+      margin: 15px auto 5px;
       pointer-events: none;
-      opacity: 0.75;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'%3E%3Cpath d='M5 12 C28 3 42 21 62 12 S96 3 116 12 S139 21 155 12' fill='none' stroke='%23d4af37' stroke-width='1.5'/%3E%3Cg fill='%23d4af37'%3E%3Ccircle cx='80' cy='12' r='3'/%3E%3Ccircle cx='50' cy='11' r='1.8'/%3E%3Ccircle cx='110' cy='12' r='1.8'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 30'%3E%3Cpath d='M10,15 Q50,0 100,15 Q150,30 190,15' fill='none' stroke='%23d4af37' stroke-width='1.5'/%3E%3Ccircle cx='100' cy='15' r='4' fill='%23d4af37'/%3E%3Ccircle cx='85' cy='13' r='2.5' fill='%233b5998'/%3E%3Ccircle cx='115' cy='17' r='2.5' fill='%233b5998'/%3E%3Cpath d='M90,10 Q100,2 110,10' fill='none' stroke='%23d4af37' stroke-width='1'/%3E%3C/svg%3E") center/contain no-repeat;
     }
 
-    /* MAHKOTA ORNAMEN EMAS TENGAH ATAS */
-    .header-crown-ornament {
-      margin: 0 auto 10px;
-      width: 120px;
-      height: 24px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0,10 Q50,-10 100,10 Q50,30 0,10' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ccircle cx='50' cy='10' r='4' fill='%23d4af37'/%3E%3Ccircle cx='30' cy='10' r='2' fill='%233b5998'/%3E%3Ccircle cx='70' cy='10' r='2' fill='%233b5998'/%3E%3C/svg%3E");
-    }
-
-    /* ORNAMEN SEPARATOR / PEMBATAS */
+    /* ORNAMEN DIVIDER DENGAN SIMBOL ELEGANT */
     .ornament-divider {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin: 14px 0;
+      margin: 12px 0;
     }
 
     .ornament-diamond {
       color: var(--gold-accent);
-      font-size: 1rem;
+      font-size: 1.2rem;
       line-height: 1;
-      text-shadow: 0 1px 5px rgba(212, 175, 55, 0.25);
+      text-shadow: 0 1px 4px rgba(212, 175, 55, 0.3);
     }
 
     .ornament-divider::before,
@@ -224,23 +194,20 @@
     }
 
     /* Tipografi */
-    .title-undangan::before {
-      content: '❦';
-      display: inline-block;
-      color: var(--gold-accent);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.7em;
-      margin-right: 8px;
-      vertical-align: middle;
-      opacity: 0.9;
-    }
-
     .title-undangan {
       font-family: 'Alex Brush', cursive;
-      font-size: 3.5rem;
+      font-size: 3.4rem;
       color: var(--primary-blue);
       line-height: 1.1;
       margin-bottom: 2px;
+    }
+
+    .title-undangan::before {
+      content: '❦ ';
+      color: var(--gold-accent);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65em;
+      vertical-align: middle;
     }
 
     .date-subtitle {
@@ -248,14 +215,14 @@
       color: var(--text-muted);
       font-style: italic;
       letter-spacing: 1px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     /* Monogram Inisial S & N */
     .monogram-wrapper {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 20px;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 15px;
       border-radius: 50%;
       border: 2px solid var(--gold-accent);
       display: flex;
@@ -263,12 +230,12 @@
       align-items: center;
       position: relative;
       background: #fafbfc;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
     }
 
     .monogram-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       color: var(--gold-dark);
       font-style: italic;
       font-weight: 700;
@@ -277,7 +244,7 @@
       gap: 6px;
     }
 
-    .monogram-text span { font-size: 1.8rem; font-weight: 400; color: var(--primary-blue); }
+    .monogram-text span { font-size: 1.6rem; font-weight: 400; color: var(--primary-blue); }
 
     .recipient-title {
       font-size: 0.78rem;
@@ -302,19 +269,19 @@
       font-family: 'Aref Ruqaa', serif;
       font-size: 2rem;
       color: var(--primary-blue);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .opening-text {
       font-size: 0.78rem;
       line-height: 1.6;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .bride-name {
       font-family: 'Alex Brush', cursive;
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       color: var(--primary-blue);
       margin: 2px 0;
     }
@@ -322,12 +289,12 @@
     .bride-desc {
       font-size: 0.75rem;
       color: var(--text-muted);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .ampersand-symbol {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: var(--gold-accent);
       font-style: italic;
     }
@@ -339,7 +306,7 @@
       justify-content: center;
       width: 100%;
       max-width: 300px;
-      margin: 15px auto 4px;
+      margin: 12px auto 4px;
     }
 
     .date-side-box {
@@ -348,47 +315,49 @@
       border-top: 2px solid var(--gold-accent);
       border-bottom: 2px solid var(--gold-accent);
       padding: 6px 0;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--primary-blue);
       letter-spacing: 1px;
       font-weight: 600;
     }
 
     .date-center-number {
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 700;
       color: var(--primary-blue);
       line-height: 1;
-      padding: 0 15px;
+      padding: 0 12px;
       font-family: 'Cormorant Garamond', serif;
     }
 
     .month-badge {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       letter-spacing: 3px;
       color: var(--gold-dark);
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .location-box {
       font-size: 0.78rem;
       color: var(--text-dark);
       background: #f0f4f8;
-      padding: 10px 14px;
+      padding: 8px 12px;
       border-radius: 10px;
       display: inline-block;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       border: 1px solid var(--border-blue);
     }
 
     .turut-mengundang-box {
-      margin-top: 12px;
-      padding-top: 10px;
+      margin-top: 10px;
+      padding-top: 8px;
       border-top: 1px dashed var(--gold-accent);
       font-size: 0.72rem;
       color: var(--text-muted);
       line-height: 1.5;
+      position: relative;
+      z-index: 10;
     }
 
     .turut-mengundang-title {
@@ -403,21 +372,25 @@
       gap: 8px;
       background: linear-gradient(135deg, var(--accent-blue), var(--primary-blue));
       color: #ffffff;
-      padding: 10px 22px;
+      padding: 9px 20px;
       border-radius: 25px;
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 500;
-      margin-top: 14px;
+      margin-top: 12px;
       box-shadow: 0 4px 12px rgba(59, 89, 152, 0.3);
+      position: relative;
+      z-index: 10;
     }
 
     .map-frame {
       width: 100%;
-      height: 200px;
+      height: 190px;
       border-radius: 10px;
       border: 1px solid var(--border-blue);
-      margin-top: 10px;
+      margin-top: 8px;
+      position: relative;
+      z-index: 10;
     }
   </style>
 </head>
@@ -447,14 +420,10 @@
     <!-- 1. COVER / DEPAN -->
     <section id="cover" class="page-section">
       <div class="luxury-card">
-        <!-- Ornamen bunga sudut -->
+        <!-- Floral Ornaments -->
         <div class="floral-corner floral-top-left" aria-hidden="true"></div>
         <div class="floral-corner floral-bottom-right" aria-hidden="true"></div>
-        <div class="floral-accent" aria-hidden="true"></div>
 
-        <!-- Corner Ornaments -->
-                                
-        <div class="header-crown-ornament"></div>
         <div class="title-undangan">Undangan</div>
         <div class="date-subtitle">Ahad, 04 Oktober 2026</div>
 
@@ -466,10 +435,13 @@
           <span class="ornament-diamond" aria-hidden="true">✦</span>
         </div>
 
-        <div style="margin-top: 12px;">
+        <div style="margin-top: 10px;">
           <div class="recipient-title">Kepada Yth.</div>
           <div class="recipient-name">Bapak/Ibu/Saudara/i</div>
         </div>
+
+        <!-- Safe Bottom Floral Divider -->
+        <div class="floral-accent-divider" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -477,12 +449,9 @@
     <!-- 2. AKAD NIKAH -->
     <section id="akad" class="page-section">
       <div class="luxury-card">
-        <!-- Ornamen bunga sudut -->
         <div class="floral-corner floral-top-left" aria-hidden="true"></div>
         <div class="floral-corner floral-bottom-right" aria-hidden="true"></div>
-        <div class="floral-accent" aria-hidden="true"></div>
 
-                                
         <div class="arabic-bismillah">بسم الله الرحمن الرحيم</div>
 
         <p class="opening-text" style="font-style: italic;">
@@ -504,7 +473,7 @@
           <span class="ornament-diamond" aria-hidden="true">❈</span>
         </div>
 
-        <p class="opening-text" style="margin-top: 8px; margin-bottom: 0; font-weight: 600; color: var(--primary-blue);">
+        <p class="opening-text" style="margin-top: 6px; margin-bottom: 0; font-weight: 600; color: var(--primary-blue);">
           Acara Akad Nikah dilaksanakan pada:
         </p>
 
@@ -528,6 +497,8 @@
           Keluarga Besar Yoso Rejo - MI Pondoklombok<br>
           PD/PC Persis / PD/PC Persistri Pangandaran
         </div>
+
+        <div class="floral-accent-divider" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -535,13 +506,9 @@
     <!-- 3. RESEPSI -->
     <section id="resepsi" class="page-section">
       <div class="luxury-card">
-        <!-- Ornamen bunga sudut -->
         <div class="floral-corner floral-top-left" aria-hidden="true"></div>
         <div class="floral-corner floral-bottom-right" aria-hidden="true"></div>
-        <div class="floral-accent" aria-hidden="true"></div>
 
-                                
-        <div class="header-crown-ornament"></div>
         <div class="title-undangan" style="font-size: 2.8rem;">Resepsi Pernikahan</div>
         
         <p class="opening-text" style="margin-top: 8px;">
@@ -571,7 +538,7 @@
           Wassalamu'alaikum Warahmatullahi Wabarakatuh
         </p>
 
-        <div style="margin-top: 12px; padding-top: 8px; border-top: 1px solid rgba(59, 89, 152, 0.15);">
+        <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(59, 89, 152, 0.15); position: relative; z-index: 10;">
           <p class="opening-text" style="font-weight: 600; color: var(--primary-blue); margin-bottom: 6px;">Kami yang Berbahagia,</p>
           <div style="display: flex; justify-content: space-around; font-size: 0.74rem; color: var(--text-dark); line-height: 1.4;">
             <div>
@@ -582,6 +549,8 @@
             </div>
           </div>
         </div>
+
+        <div class="floral-accent-divider" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -589,13 +558,9 @@
     <!-- 4. LOKASI MAPS -->
     <section id="lokasi" class="page-section">
       <div class="luxury-card">
-        <!-- Ornamen bunga sudut -->
         <div class="floral-corner floral-top-left" aria-hidden="true"></div>
         <div class="floral-corner floral-bottom-right" aria-hidden="true"></div>
-        <div class="floral-accent" aria-hidden="true"></div>
 
-                                
-        <div class="header-crown-ornament"></div>
         <div class="title-undangan" style="font-size: 2.6rem;">Peta Lokasi</div>
         <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px;">
           Sidomulyo, Pangandaran, Jawa Barat
@@ -613,6 +578,8 @@
             <i class="fa-solid fa-map-pin"></i> Buka Google Maps
           </a>
         </div>
+
+        <div class="floral-accent-divider" aria-hidden="true"></div>
       </div>
     </section>
 
