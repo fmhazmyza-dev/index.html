@@ -102,7 +102,7 @@
     /* Section Utama */
     .page-section {
       min-height: 100vh;
-      padding: 40px 22px 90px;
+      padding: 50px 22px 90px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -111,36 +111,27 @@
       position: relative;
       background-color: #f4f8fc;
       border-bottom: 1px solid rgba(0,0,0,0.05);
+      overflow: hidden;
     }
 
-    /* Watermark Floral Background (Mirip Canva) */
+    /* Bunga Watercolor Sudut (Ganti Link Direct PNG) */
     .floral-bg-top {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 170px;
+      top: -15px;
+      left: -15px;
+      width: 180px;
       pointer-events: none;
       z-index: 1;
-      opacity: 0.88;
     }
 
     .floral-bg-bottom {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 170px;
+      bottom: -15px;
+      right: -15px;
+      width: 180px;
       pointer-events: none;
       z-index: 1;
-      opacity: 0.88;
-    }
-
-    .water-stain {
-      position: absolute;
-      top: 10px;
-      right: 0;
-      width: 160px;
-      opacity: 0.45;
-      pointer-events: none;
+      transform: rotate(180deg);
     }
 
     .content-card {
@@ -225,7 +216,7 @@
       font-size: 0.78rem;
       line-height: 1.6;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .bride-name {
@@ -246,33 +237,48 @@
       font-size: 1.8rem;
       color: var(--gold-accent);
       font-style: italic;
-      margin: 6px 0;
+      margin: 4px 0;
     }
 
-    /* Kotak Tanggal Desain Canva */
-    .date-badge-flex {
-      display: flex;
-      justify-content: center;
+    /* POSISI TANGGAL DENGAN GRID (Memastikan 04 di Tengah-Tengah) */
+    .date-badge-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 12px;
-      margin: 18px 0 6px;
+      justify-content: center;
+      width: 100%;
+      max-width: 320px;
+      margin: 18px auto 6px;
     }
 
-    .badge-day, .badge-time {
+    .badge-day {
+      text-align: right;
       border-top: 1px solid var(--border-blue);
       border-bottom: 1px solid var(--border-blue);
-      padding: 4px 18px;
+      padding: 5px 10px;
       font-size: 0.82rem;
       color: var(--primary-blue);
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    .badge-time {
+      text-align: left;
+      border-top: 1px solid var(--border-blue);
+      border-bottom: 1px solid var(--border-blue);
+      padding: 5px 10px;
+      font-size: 0.82rem;
+      color: var(--primary-blue);
+      letter-spacing: 1px;
       font-weight: 500;
     }
 
     .badge-number {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 600;
       color: var(--primary-blue);
       line-height: 1;
+      padding: 0 16px;
       font-family: 'Cormorant Garamond', serif;
     }
 
@@ -295,18 +301,18 @@
     }
 
     .turut-mengundang-box {
-      margin-top: 20px;
-      padding-top: 15px;
+      margin-top: 15px;
+      padding-top: 12px;
       border-top: 1px dashed rgba(108, 140, 174, 0.3);
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .turut-mengundang-title {
       font-weight: 600;
       color: var(--primary-blue);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .btn-maps {
@@ -373,9 +379,9 @@
 
     <!-- 1. COVER / DEPAN -->
     <section id="cover" class="page-section">
-      <!-- Ornamen Bunga Watercolor Canvas -->
-      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-bottom" style="transform: rotate(180deg);" alt="Floral Bottom">
+      <!-- Image Bunga PNG Transparent -->
+      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-bottom" alt="Floral Bottom">
 
       <div class="content-card">
         <div class="header-divider"></div>
@@ -394,7 +400,7 @@
 
     <!-- 2. AKAD NIKAH -->
     <section id="akad" class="page-section">
-      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-top" alt="Floral Top">
 
       <div class="content-card">
         <div class="arabic-bismillah">بسم الله الرحمن الرحيم</div>
@@ -418,7 +424,8 @@
           Akad Nikah yang insya Allah akan dilaksanakan pada:
         </p>
 
-        <div class="date-badge-flex">
+        <!-- Dynamic Grid Tanggal Presisi Tengah -->
+        <div class="date-badge-grid">
           <div class="badge-day">AHAD</div>
           <div class="badge-number">04</div>
           <div class="badge-time">09.00 WIB</div>
@@ -433,7 +440,6 @@
           Wassalamu'alaikum Warahmatullahi Wabarakatuh
         </p>
 
-        <!-- Turut Mengundang sesuai Desain Canva -->
         <div class="turut-mengundang-box">
           <div class="turut-mengundang-title">- Turut Mengundang -</div>
           Keluarga Besar Badri (Alm) - Banjar<br>
@@ -448,8 +454,8 @@
 
     <!-- 3. RESEPSI -->
     <section id="resepsi" class="page-section">
-      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-bottom" style="transform: rotate(180deg);" alt="Floral Bottom">
+      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-bottom" alt="Floral Bottom">
 
       <div class="content-card">
         <p class="opening-text" style="font-style: italic;">
@@ -459,7 +465,8 @@
           Dengan memohon Rahmat dan Ridho Allah SWT kami bermaksud menyelenggarakan acara resepsi pernikahan putra-putri kami yang insya Allah akan diselenggarakan pada :
         </p>
 
-        <div class="date-badge-flex">
+        <!-- Dynamic Grid Tanggal Presisi Tengah -->
+        <div class="date-badge-grid">
           <div class="badge-day">AHAD</div>
           <div class="badge-number">04</div>
           <div class="badge-time">10.00 WIB</div>
@@ -497,8 +504,8 @@
 
     <!-- 4. LOKASI MAPS -->
     <section id="lokasi" class="page-section">
-      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-bottom" style="transform: rotate(180deg);" alt="Floral Bottom">
+      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-bottom" alt="Floral Bottom">
 
       <div class="content-card">
         <div class="title-undangan" style="font-size: 2.2rem;">Lokasi Acara</div>
@@ -540,7 +547,7 @@
       isPlaying = !isPlaying;
     }
 
-    // Auto Play saat klik pertama pada layar
+    // Auto Play saat interaksi pertama
     document.body.addEventListener('click', function() {
       if (!isPlaying) {
         music.play().then(() => {
@@ -550,7 +557,7 @@
       }
     }, { once: true });
 
-    // Active Navigation Highlighting
+    // Highlight menu aktif saat di-scroll
     const sections = document.querySelectorAll('.page-section');
     const navBtns = document.querySelectorAll('.nav-btn');
 
