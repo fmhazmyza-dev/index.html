@@ -36,7 +36,6 @@
       min-height: 100vh;
     }
 
-    /* Container HP */
     .mobile-container {
       width: 100%;
       max-width: 440px;
@@ -99,10 +98,10 @@
     .nav-btn i { font-size: 1.1rem; }
     .nav-btn.active, .nav-btn:hover { color: #ffffff; }
 
-    /* Section Utama */
+    /* Page Section */
     .page-section {
       min-height: 100vh;
-      padding: 50px 22px 90px;
+      padding: 60px 22px 90px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -114,21 +113,23 @@
       overflow: hidden;
     }
 
-    /* Vector Bunga Watercolor High-Res Direct */
-    .floral-bg-top {
+    /* ORNAMEN BUNGA SVG INLINE */
+    .floral-svg-top {
       position: absolute;
       top: -10px;
       left: -10px;
-      width: 170px;
+      width: 140px;
+      height: 140px;
       pointer-events: none;
       z-index: 1;
     }
 
-    .floral-bg-bottom {
+    .floral-svg-bottom {
       position: absolute;
       bottom: -10px;
       right: -10px;
-      width: 170px;
+      width: 140px;
+      height: 140px;
       pointer-events: none;
       z-index: 1;
       transform: rotate(180deg);
@@ -140,7 +141,7 @@
       width: 100%;
     }
 
-    /* Tipografi & Ornamen */
+    /* Tipografi */
     .header-divider {
       width: 60px;
       height: 12px;
@@ -163,7 +164,6 @@
       margin-bottom: 30px;
     }
 
-    /* Monogram Inisial S & N */
     .monogram-wrapper {
       width: 160px;
       height: 160px;
@@ -188,9 +188,7 @@
       gap: 6px;
     }
 
-    .monogram-text span {
-      font-size: 1.8rem;
-    }
+    .monogram-text span { font-size: 1.8rem; }
 
     .recipient-title {
       font-size: 0.82rem;
@@ -204,7 +202,6 @@
       font-weight: 500;
     }
 
-    /* Teks Arab & Mempelai */
     .arabic-bismillah {
       font-family: 'Aref Ruqaa', serif;
       font-size: 1.8rem;
@@ -240,7 +237,7 @@
       margin: 4px 0;
     }
 
-    /* FORMAT TANGGAL PRESISI TENGAH (PERBAIKAN FLEXBOX & BORDER) */
+    /* TANGGAL PRESISI DENGAN FLEXBOX */
     .date-row-container {
       display: flex;
       align-items: center;
@@ -316,11 +313,6 @@
       font-weight: 500;
       margin-top: 18px;
       box-shadow: 0 4px 12px rgba(108, 140, 174, 0.3);
-      transition: background 0.3s ease;
-    }
-
-    .btn-maps:hover {
-      background-color: var(--primary-blue);
     }
 
     .map-frame {
@@ -334,45 +326,44 @@
 </head>
 <body>
 
-  <!-- Audio Musik Otomatis -->
   <audio id="bg-music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-romantic-piano-112199.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Tombol Musik Melayang -->
   <div class="music-btn" onclick="toggleMusic()">
     <i class="fa-solid fa-music" id="music-icon"></i>
   </div>
 
   <div class="mobile-container">
 
-    <!-- Floating Navbar Bawah -->
     <nav class="navbar">
-      <a href="#cover" class="nav-btn active">
-        <i class="fa-solid fa-heart"></i>
-        <span>Cover</span>
-      </a>
-      <a href="#akad" class="nav-btn">
-        <i class="fa-solid fa-ring"></i>
-        <span>Akad</span>
-      </a>
-      <a href="#resepsi" class="nav-btn">
-        <i class="fa-solid fa-envelope-open"></i>
-        <span>Resepsi</span>
-      </a>
-      <a href="#lokasi" class="nav-btn">
-        <i class="fa-solid fa-map-location-dot"></i>
-        <span>Peta</span>
-      </a>
+      <a href="#cover" class="nav-btn active"><i class="fa-solid fa-heart"></i><span>Cover</span></a>
+      <a href="#akad" class="nav-btn"><i class="fa-solid fa-ring"></i><span>Akad</span></a>
+      <a href="#resepsi" class="nav-btn"><i class="fa-solid fa-envelope-open"></i><span>Resepsi</span></a>
+      <a href="#lokasi" class="nav-btn"><i class="fa-solid fa-map-location-dot"></i><span>Peta</span></a>
     </nav>
 
+    <!-- KODE VECTOR SVG BUNGA LOKAL BUATAN -->
+    <svg class="floral-svg-top" viewBox="0 0 100 100" fill="none">
+      <path d="M0,0 C30,10 50,30 60,60 C40,50 20,40 0,0 Z" fill="#6c8cae" opacity="0.35"/>
+      <circle cx="20" cy="20" r="12" fill="#8da4c4" opacity="0.6"/>
+      <circle cx="35" cy="15" r="8" fill="#cfa856" opacity="0.7"/>
+      <circle cx="15" cy="35" r="9" fill="#b0c4de" opacity="0.8"/>
+      <path d="M0,0 Q40,10 25,45 Q10,20 0,0" fill="#6c8cae" opacity="0.5"/>
+      <path d="M0,30 Q30,30 45,0 Q20,15 0,30" fill="#a0b8d6" opacity="0.5"/>
+    </svg>
+
+    <svg class="floral-svg-bottom" viewBox="0 0 100 100" fill="none">
+      <path d="M0,0 C30,10 50,30 60,60 C40,50 20,40 0,0 Z" fill="#6c8cae" opacity="0.35"/>
+      <circle cx="20" cy="20" r="12" fill="#8da4c4" opacity="0.6"/>
+      <circle cx="35" cy="15" r="8" fill="#cfa856" opacity="0.7"/>
+      <circle cx="15" cy="35" r="9" fill="#b0c4de" opacity="0.8"/>
+      <path d="M0,0 Q40,10 25,45 Q10,20 0,0" fill="#6c8cae" opacity="0.5"/>
+      <path d="M0,30 Q30,30 45,0 Q20,15 0,30" fill="#a0b8d6" opacity="0.5"/>
+    </svg>
 
     <!-- 1. COVER / DEPAN -->
     <section id="cover" class="page-section">
-      <!-- Bunga Direct SVG Vector -->
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-bottom" alt="Floral Bottom">
-
       <div class="content-card">
         <div class="header-divider"></div>
         <div class="title-undangan">Undangan</div>
@@ -387,11 +378,8 @@
       </div>
     </section>
 
-
     <!-- 2. AKAD NIKAH -->
     <section id="akad" class="page-section">
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-top" alt="Floral Top">
-
       <div class="content-card">
         <div class="arabic-bismillah">بسم الله الرحمن الرحيم</div>
 
@@ -414,7 +402,6 @@
           Akad Nikah yang insya Allah akan dilaksanakan pada:
         </p>
 
-        <!-- Format Tanggal Presisi 04 di Tengah -->
         <div class="date-row-container">
           <div class="date-side-box">AHAD</div>
           <div class="date-center-number">04</div>
@@ -441,12 +428,8 @@
       </div>
     </section>
 
-
     <!-- 3. RESEPSI -->
     <section id="resepsi" class="page-section">
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-bottom" alt="Floral Bottom">
-
       <div class="content-card">
         <p class="opening-text" style="font-style: italic;">
           Assalamu'alaikum warahmatullahi wabarakatuh
@@ -455,7 +438,6 @@
           Dengan memohon Rahmat dan Ridho Allah SWT kami bermaksud menyelenggarakan acara resepsi pernikahan putra-putri kami yang insya Allah akan diselenggarakan pada :
         </p>
 
-        <!-- Format Tanggal Presisi 04 di Tengah -->
         <div class="date-row-container">
           <div class="date-side-box">AHAD</div>
           <div class="date-center-number">04</div>
@@ -473,9 +455,6 @@
         <p class="opening-text">
           Atas kehadiran dan doa restunya kami ucapkan terimakasih
         </p>
-        <p class="opening-text" style="font-style: italic;">
-          Wassalamu'alaikum Warahmatullahi Wabarakatuh
-        </p>
 
         <div style="margin-top: 20px;">
           <p class="opening-text" style="font-weight: 500; color: var(--primary-blue); margin-bottom: 10px;">Kami yang Berbahagia,</p>
@@ -491,12 +470,8 @@
       </div>
     </section>
 
-
     <!-- 4. LOKASI MAPS -->
     <section id="lokasi" class="page-section">
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-bottom" alt="Floral Bottom">
-
       <div class="content-card">
         <div class="title-undangan" style="font-size: 2.2rem;">Lokasi Acara</div>
         <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px;">
@@ -521,7 +496,6 @@
   </div>
 
   <script>
-    // Fitur Musik
     const music = document.getElementById("bg-music");
     const musicIcon = document.getElementById("music-icon");
     let isPlaying = false;
@@ -537,7 +511,6 @@
       isPlaying = !isPlaying;
     }
 
-    // Auto Play saat klik pertama
     document.body.addEventListener('click', function() {
       if (!isPlaying) {
         music.play().then(() => {
@@ -547,7 +520,6 @@
       }
     }, { once: true });
 
-    // Highlight menu aktif
     const sections = document.querySelectorAll('.page-section');
     const navBtns = document.querySelectorAll('.nav-btn');
 
