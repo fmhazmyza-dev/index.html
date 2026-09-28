@@ -4,18 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Pernikahan - Supriyadi & Neti</title>
-  <!-- Google Fonts & Font Awesome Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Aref+Ruqaa&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --primary-blue: #1b365d;
-      --soft-blue: #4a6fa5;
-      --light-blue: #eef4f8;
-      --gold-accent: #c5a059;
-      --text-dark: #2c3e50;
-      --white: #ffffff;
+      --bg-color: #f2f6fa;
+      --primary-blue: #6c8cae;
+      --text-dark: #3a4b5c;
+      --text-muted: #64748b;
+      --gold-accent: #cfa856;
+      --border-blue: #b0c4de;
     }
 
     * {
@@ -26,8 +27,8 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #bcd0e2;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #dbe4ee;
       color: var(--text-dark);
       display: flex;
       justify-content: center;
@@ -35,326 +36,486 @@
       min-height: 100vh;
     }
 
+    /* Container HP */
     .mobile-container {
       width: 100%;
-      max-width: 480px;
-      background: var(--white);
+      max-width: 440px;
+      background: var(--bg-color);
       min-height: 100vh;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
       position: relative;
       overflow-x: hidden;
     }
 
+    /* Floating Music Button */
+    .music-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--primary-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue);
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    /* Navbar Bawah */
     .navbar {
       position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       width: calc(100% - 40px);
-      max-width: 440px;
-      background: rgba(27, 54, 93, 0.95);
-      backdrop-filter: blur(10px);
+      max-width: 400px;
+      background: rgba(108, 140, 174, 0.92);
+      backdrop-filter: blur(8px);
       border-radius: 30px;
       display: flex;
       justify-content: space-around;
-      padding: 12px 10px;
+      padding: 8px 6px;
       z-index: 1000;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     }
 
     .nav-btn {
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       transition: all 0.3s ease;
     }
 
-    .nav-btn i {
-      font-size: 1.2rem;
-    }
+    .nav-btn i { font-size: 1.1rem; }
+    .nav-btn.active, .nav-btn:hover { color: #ffffff; }
 
-    .nav-btn.active, .nav-btn:hover {
-      color: var(--gold-accent);
-    }
-
+    /* Section Utama */
     .page-section {
       min-height: 100vh;
-      padding: 50px 20px 100px;
+      padding: 40px 22px 90px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       position: relative;
-      background-color: var(--light-blue);
-      border-bottom: 2px solid rgba(27, 54, 93, 0.05);
+      background-color: #f4f8fc;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
-    .floral-top-left {
+    /* Watermark Floral Background (Mirip Canva) */
+    .floral-bg-top {
       position: absolute;
       top: 0;
       left: 0;
-      width: 130px;
+      width: 170px;
       pointer-events: none;
       z-index: 1;
+      opacity: 0.88;
     }
 
-    .floral-bottom-right {
+    .floral-bg-bottom {
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 130px;
-      transform: rotate(180deg);
+      width: 170px;
       pointer-events: none;
       z-index: 1;
+      opacity: 0.88;
+    }
+
+    .water-stain {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      width: 160px;
+      opacity: 0.45;
+      pointer-events: none;
     }
 
     .content-card {
       position: relative;
       z-index: 2;
       width: 100%;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(197, 160, 89, 0.4);
-      border-radius: 20px;
-      padding: 30px 18px;
-      box-shadow: 0 8px 32px rgba(27, 54, 93, 0.08);
     }
 
-    .subtitle {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.8rem;
-      color: var(--soft-blue);
-      margin-bottom: 12px;
-      font-weight: 600;
+    /* Tipografi & Ornamen */
+    .header-divider {
+      width: 60px;
+      height: 12px;
+      margin: 0 auto 10px;
+      background: url('https://api.iconify.design/lucide:sparkles.svg?color=%23cfa856') no-repeat center;
     }
 
-    .title-couple {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.6rem;
+    .title-undangan {
+      font-family: 'Alex Brush', cursive;
+      font-size: 3.2rem;
       color: var(--primary-blue);
-      line-height: 1.2;
-      margin: 8px 0;
+      line-height: 1.1;
+      margin-bottom: 2px;
     }
 
-    .title-ampersand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: var(--gold-accent);
-      margin: 4px 0;
-    }
-
-    .parents-name {
-      font-size: 0.85rem;
-      color: #555;
+    .date-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
       font-style: italic;
-      margin-bottom: 8px;
+      margin-bottom: 30px;
     }
 
-    .event-box {
-      margin: 18px 0;
-      padding: 14px;
-      background: var(--light-blue);
-      border-radius: 12px;
-      border-left: 4px solid var(--gold-accent);
+    /* Monogram Inisial S & N */
+    .monogram-wrapper {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 30px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-accent);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: inset 0 0 15px rgba(207, 168, 86, 0.15);
     }
 
-    .event-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      color: var(--primary-blue);
-      font-weight: 600;
-    }
-
-    .event-time {
-      font-size: 0.95rem;
-      font-weight: 600;
+    .monogram-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
       color: var(--gold-accent);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .monogram-text span {
+      font-size: 1.8rem;
+    }
+
+    .recipient-title {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .recipient-name {
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    /* Teks Arab & Mempelai */
+    .arabic-bismillah {
+      font-family: 'Aref Ruqaa', serif;
+      font-size: 1.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 15px;
+    }
+
+    .opening-text {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .bride-name {
+      font-family: 'Alex Brush', cursive;
+      font-size: 2.5rem;
+      color: var(--primary-blue);
       margin: 4px 0;
     }
 
-    .event-address {
-      font-size: 0.85rem;
-      color: #444;
-      line-height: 1.5;
+    .bride-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .ampersand-symbol {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--gold-accent);
+      font-style: italic;
+      margin: 6px 0;
+    }
+
+    /* Kotak Tanggal Desain Canva */
+    .date-badge-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0 6px;
+    }
+
+    .badge-day, .badge-time {
+      border-top: 1px solid var(--border-blue);
+      border-bottom: 1px solid var(--border-blue);
+      padding: 4px 18px;
+      font-size: 0.82rem;
+      color: var(--primary-blue);
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    .badge-number {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      line-height: 1;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .month-badge {
+      font-size: 0.88rem;
+      letter-spacing: 3px;
+      color: var(--primary-blue);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .location-box {
+      font-size: 0.78rem;
+      color: var(--text-dark);
+      background: rgba(176, 196, 222, 0.25);
+      padding: 8px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .turut-mengundang-box {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px dashed rgba(108, 140, 174, 0.3);
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .turut-mengundang-title {
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 6px;
     }
 
     .btn-maps {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--primary-blue), var(--soft-blue));
-      color: var(--white);
-      padding: 12px 22px;
-      border-radius: 25px;
+      display: inline-block;
+      background-color: #8da4c4;
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 20px;
       text-decoration: none;
+      font-size: 0.82rem;
       font-weight: 500;
-      font-size: 0.88rem;
-      margin-top: 15px;
-      box-shadow: 0 4px 15px rgba(27, 54, 93, 0.3);
+      margin-top: 18px;
+      box-shadow: 0 4px 12px rgba(108, 140, 174, 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .btn-maps:hover {
+      background-color: var(--primary-blue);
     }
 
     .map-frame {
       width: 100%;
-      height: 230px;
-      border-radius: 15px;
-      border: 2px solid var(--gold-accent);
+      height: 220px;
+      border-radius: 10px;
+      border: 1px solid var(--border-blue);
       margin-top: 15px;
     }
   </style>
 </head>
 <body>
 
+  <!-- Audio Musik Otomatis -->
+  <audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-romantic-piano-112199.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Tombol Musik Melayang -->
+  <div class="music-btn" onclick="toggleMusic()">
+    <i class="fa-solid fa-music" id="music-icon"></i>
+  </div>
+
   <div class="mobile-container">
 
-    <!-- Floating Navbar -->
+    <!-- Floating Navbar Bawah -->
     <nav class="navbar">
       <a href="#cover" class="nav-btn active">
         <i class="fa-solid fa-heart"></i>
         <span>Cover</span>
       </a>
-      <a href="#isi" class="nav-btn">
+      <a href="#akad" class="nav-btn">
+        <i class="fa-solid fa-ring"></i>
+        <span>Akad</span>
+      </a>
+      <a href="#resepsi" class="nav-btn">
         <i class="fa-solid fa-envelope-open"></i>
         <span>Resepsi</span>
       </a>
       <a href="#lokasi" class="nav-btn">
         <i class="fa-solid fa-map-location-dot"></i>
-        <span>Lokasi</span>
+        <span>Peta</span>
       </a>
     </nav>
 
-    <!-- HALAMAN 1: COVER -->
+
+    <!-- 1. COVER / DEPAN -->
     <section id="cover" class="page-section">
-      <svg class="floral-top-left" viewBox="0 0 200 200">
-        <g fill="#4a6fa5" opacity="0.4">
-          <path d="M0,0 Q100,20 120,100 Q40,80 0,0 Z" />
-          <path d="M0,0 Q20,100 100,120 Q80,40 0,0 Z" fill="#c5a059" />
-        </g>
-      </svg>
-      <svg class="floral-bottom-right" viewBox="0 0 200 200">
-        <g fill="#4a6fa5" opacity="0.4">
-          <path d="M0,0 Q100,20 120,100 Q40,80 0,0 Z" />
-          <path d="M0,0 Q20,100 100,120 Q80,40 0,0 Z" fill="#c5a059" />
-        </g>
-      </svg>
+      <!-- Ornamen Bunga Watercolor Canvas -->
+      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-bottom" style="transform: rotate(180deg);" alt="Floral Bottom">
 
       <div class="content-card">
-        <div class="subtitle">Undangan Pernikahan</div>
-        
-        <div class="title-couple">H. Supriyadi, Amd</div>
-        <div class="parents-name">Bin Badri</div>
+        <div class="header-divider"></div>
+        <div class="title-undangan">Undangan</div>
+        <div class="date-subtitle">Ahad, 04 Oktober 2026</div>
 
-        <div class="title-ampersand">&</div>
-
-        <div class="title-couple">Neti Cahyati</div>
-        <div class="parents-name">Binti Memen Wasman</div>
-
-        <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold-accent), transparent); margin: 18px 0;">
-
-        <div class="event-box">
-          <div class="event-title">Acara Akad Nikah</div>
-          <div style="font-size: 0.88rem; margin-top: 4px; color: var(--primary-blue); font-weight: 500;">
-            <i class="fa-regular fa-calendar-check"></i> Minggu, 04 Oktober 2026
-          </div>
-          <div class="event-time">
-            <i class="fa-regular fa-clock"></i> Pukul 09.00 WIB
-          </div>
+        <div class="monogram-wrapper">
+          <div class="monogram-text">S <span>&</span> N</div>
         </div>
 
-        <div class="event-address">
-          <strong style="color: var(--primary-blue);"><i class="fa-solid fa-house-chimney"></i> Lokasi Akad:</strong><br>
-          Kediaman Mempelai Wanita<br>
+        <div class="recipient-title">Kepada Yth.</div>
+        <div class="recipient-name">Bapak/Ibu/Saudara/i:</div>
+      </div>
+    </section>
+
+
+    <!-- 2. AKAD NIKAH -->
+    <section id="akad" class="page-section">
+      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-top" alt="Floral Top">
+
+      <div class="content-card">
+        <div class="arabic-bismillah">بسم الله الرحمن الرحيم</div>
+
+        <p class="opening-text" style="font-style: italic;">
+          Assalamu'alaikum warahmatullahi wabarakatuh
+        </p>
+        <p class="opening-text">
+          Dengan ini kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada pernikahan putra dan putri kami:
+        </p>
+
+        <div class="bride-name">H. Supriyadi, A.md</div>
+        <div class="bride-desc">putra pertama Bapak Badri (Alm) dan Ibu Siti Maryam</div>
+
+        <div class="ampersand-symbol">&</div>
+
+        <div class="bride-name">Neti Cahyati, S.Pd.I</div>
+        <div class="bride-desc">putri pertama Bapak Memen Wasman dan Ibu Titi Maryati</div>
+
+        <p class="opening-text" style="margin-top: 15px; margin-bottom: 5px;">
+          Akad Nikah yang insya Allah akan dilaksanakan pada:
+        </p>
+
+        <div class="date-badge-flex">
+          <div class="badge-day">AHAD</div>
+          <div class="badge-number">04</div>
+          <div class="badge-time">09.00 WIB</div>
+        </div>
+        <div class="month-badge">OKTOBER 2026</div>
+
+        <div class="location-box">
           Dusun Pondoklombok Rt 04 Rw 09, Sidomulyo, Pangandaran
+        </div>
+
+        <p class="opening-text" style="font-style: italic;">
+          Wassalamu'alaikum Warahmatullahi Wabarakatuh
+        </p>
+
+        <!-- Turut Mengundang sesuai Desain Canva -->
+        <div class="turut-mengundang-box">
+          <div class="turut-mengundang-title">- Turut Mengundang -</div>
+          Keluarga Besar Badri (Alm) - Banjar<br>
+          Keluarga Besar Memen Wasman - Tasikmalaya<br>
+          DPTD PKS Kab. Tasikmalaya - DPTD PKS Kota Banjar<br>
+          Keluarga Besar Yoso Rejo - Keluarga Besar MI Pondoklombok<br>
+          Keluarga Besar PD/PC Persis / PD/PC Persistri Pangandaran
         </div>
       </div>
     </section>
 
 
-    <!-- HALAMAN 2: ISI & RESEPSI -->
-    <section id="isi" class="page-section">
-      <svg class="floral-top-left" viewBox="0 0 200 200">
-        <g fill="#4a6fa5" opacity="0.4">
-          <path d="M0,0 Q100,20 120,100 Q40,80 0,0 Z" />
-          <path d="M0,0 Q20,100 100,120 Q80,40 0,0 Z" fill="#c5a059" />
-        </g>
-      </svg>
-      <svg class="floral-bottom-right" viewBox="0 0 200 200">
-        <g fill="#4a6fa5" opacity="0.4">
-          <path d="M0,0 Q100,20 120,100 Q40,80 0,0 Z" />
-          <path d="M0,0 Q20,100 100,120 Q80,40 0,0 Z" fill="#c5a059" />
-        </g>
-      </svg>
+    <!-- 3. RESEPSI -->
+    <section id="resepsi" class="page-section">
+      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-bottom" style="transform: rotate(180deg);" alt="Floral Bottom">
 
       <div class="content-card">
-        <i class="fa-solid fa-hands-praying" style="font-size: 1.8rem; color: var(--gold-accent); margin-bottom: 8px;"></i>
-        <div class="subtitle">Walimatul 'Ursy</div>
-        
-        <p style="font-size: 0.85rem; line-height: 1.6; color: #555; margin-bottom: 12px;">
-          Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk berkenan hadir dan memberikan do'a restu pada acara resepsi pernikahan kami:
+        <p class="opening-text" style="font-style: italic;">
+          Assalamu'alaikum warahmatullahi wabarakatuh
+        </p>
+        <p class="opening-text">
+          Dengan memohon Rahmat dan Ridho Allah SWT kami bermaksud menyelenggarakan acara resepsi pernikahan putra-putri kami yang insya Allah akan diselenggarakan pada :
         </p>
 
-        <div class="event-box">
-          <div class="event-title">Acara Resepsi</div>
-          <div style="font-size: 0.88rem; margin-top: 4px; color: var(--primary-blue); font-weight: 500;">
-            <i class="fa-regular fa-calendar"></i> Minggu, 04 Oktober 2026
-          </div>
-          <div class="event-time">
-            <i class="fa-regular fa-clock"></i> Pukul 10.00 WIB s/d Selesai
-          </div>
+        <div class="date-badge-flex">
+          <div class="badge-day">AHAD</div>
+          <div class="badge-number">04</div>
+          <div class="badge-time">10.00 WIB</div>
         </div>
+        <div class="month-badge">OKTOBER 2026</div>
 
-        <div class="event-address" style="margin-bottom: 12px;">
-          <strong style="color: var(--primary-blue);"><i class="fa-solid fa-location-dot"></i> Lokasi Resepsi:</strong><br>
-          Kediaman Mempelai Wanita<br>
+        <div class="location-box">
           Dusun Pondoklombok Rt 04 Rw 09, Sidomulyo, Pangandaran
         </div>
 
-        <p style="font-size: 0.83rem; line-height: 1.5; color: #555; font-style: italic;">
-          "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do'a restu kepada kedua mempelai."
+        <p class="opening-text" style="margin-top: 10px;">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila bapak/ibu/saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai
         </p>
+        <p class="opening-text">
+          Atas kehadiran dan doa restunya kami ucapkan terimakasih
+        </p>
+        <p class="opening-text" style="font-style: italic;">
+          Wassalamu'alaikum Warahmatullahi Wabarakatuh
+        </p>
+
+        <div style="margin-top: 20px;">
+          <p class="opening-text" style="font-weight: 500; color: var(--primary-blue); margin-bottom: 10px;">Kami yang Berbahagia,</p>
+          <div style="display: flex; justify-content: space-around; font-size: 0.75rem; color: var(--text-dark); line-height: 1.5;">
+            <div>
+              <strong>Kel. Besar Badri (Alm) &<br>Siti Maryam</strong>
+            </div>
+            <div>
+              <strong>Kel. Besar Memen<br>Wasman & Titi Maryati</strong>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
 
-    <!-- HALAMAN 3: DENAH LOKASI -->
+    <!-- 4. LOKASI MAPS -->
     <section id="lokasi" class="page-section">
-      <svg class="floral-top-left" viewBox="0 0 200 200">
-        <g fill="#4a6fa5" opacity="0.4">
-          <path d="M0,0 Q100,20 120,100 Q40,80 0,0 Z" />
-          <path d="M0,0 Q20,100 100,120 Q80,40 0,0 Z" fill="#c5a059" />
-        </g>
-      </svg>
-      <svg class="floral-bottom-right" viewBox="0 0 200 200">
-        <g fill="#4a6fa5" opacity="0.4">
-          <path d="M0,0 Q100,20 120,100 Q40,80 0,0 Z" />
-          <path d="M0,0 Q20,100 100,120 Q80,40 0,0 Z" fill="#c5a059" />
-        </g>
-      </svg>
+      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://png.pngtree.com/png-clipart/20230508/original/pngtree-vintage-floral-corner-frame-border-blue-flowers-png-image_9150146.png" class="floral-bg-bottom" style="transform: rotate(180deg);" alt="Floral Bottom">
 
       <div class="content-card">
-        <div class="subtitle">Peta & Denah Lokasi</div>
-        <div class="event-title" style="margin-bottom: 8px;">Petunjuk Arah</div>
-        
-        <p style="font-size: 0.83rem; color: #555;">
-          Lokasi Acara (Akad & Resepsi):<br>
-          <strong>Dusun Pondoklombok Rt 04 Rw 09, Sidomulyo, Pangandaran</strong>
+        <div class="title-undangan" style="font-size: 2.2rem;">Lokasi Acara</div>
+        <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px;">
+          Purbahayu, Pangandaran, West Java, Indonesia
         </p>
 
         <iframe 
           class="map-frame"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15814.288229153393!2d108.625!3d-7.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e659359e19a4e3f%3A0x8e8eb4bf4cf204a2!2sSidomulyo%2C%20Pangandaran!5e0!3m2!1sid!2sid!4v1680000000000!5m2!1sid!2sid" 
           allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
+          loading="lazy">
         </iframe>
 
         <div>
           <a href="https://maps.app.goo.gl/BQEu44uxTvrUe2UJA" target="_blank" class="btn-maps">
-            <i class="fa-solid fa-diamond-turn-right"></i> Buka via Google Maps
+            Buka Lokasi via Google Maps
           </a>
         </div>
       </div>
@@ -363,6 +524,33 @@
   </div>
 
   <script>
+    // Fitur Musik
+    const music = document.getElementById("bg-music");
+    const musicIcon = document.getElementById("music-icon");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        musicIcon.className = "fa-solid fa-music";
+      } else {
+        music.play();
+        musicIcon.className = "fa-solid fa-pause";
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // Auto Play saat klik pertama pada layar
+    document.body.addEventListener('click', function() {
+      if (!isPlaying) {
+        music.play().then(() => {
+          isPlaying = true;
+          musicIcon.className = "fa-solid fa-pause";
+        }).catch(err => console.log(err));
+      }
+    }, { once: true });
+
+    // Active Navigation Highlighting
     const sections = document.querySelectorAll('.page-section');
     const navBtns = document.querySelectorAll('.nav-btn');
 
