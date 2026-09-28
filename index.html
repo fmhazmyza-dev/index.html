@@ -11,12 +11,15 @@
 
   <style>
     :root {
-      --bg-color: #f2f6fa;
-      --primary-blue: #6c8cae;
-      --text-dark: #3a4b5c;
+      --bg-color: #f0f4f8;
+      --card-bg: #ffffff;
+      --primary-blue: #4a6fa5;
+      --accent-blue: #6c8cae;
+      --text-dark: #2d3748;
       --text-muted: #64748b;
-      --gold-accent: #cfa856;
-      --border-blue: #b0c4de;
+      --gold-accent: #c59b27;
+      --gold-light: #e6ca65;
+      --border-blue: #cbd5e1;
     }
 
     * {
@@ -28,7 +31,7 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #dbe4ee;
+      background-color: #cbd5e1;
       color: var(--text-dark);
       display: flex;
       justify-content: center;
@@ -36,12 +39,13 @@
       min-height: 100vh;
     }
 
+    /* Tampilan HP / Container Utama */
     .mobile-container {
       width: 100%;
       max-width: 440px;
       background: var(--bg-color);
       min-height: 100vh;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
       position: relative;
       overflow-x: hidden;
     }
@@ -51,9 +55,9 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      width: 42px;
-      height: 42px;
-      background: rgba(255, 255, 255, 0.9);
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.95);
       border: 1px solid var(--primary-blue);
       border-radius: 50%;
       display: flex;
@@ -63,10 +67,15 @@
       font-size: 1.1rem;
       cursor: pointer;
       z-index: 1001;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
     }
 
-    /* Navbar Bawah */
+    .music-btn:active {
+      transform: scale(0.9);
+    }
+
+    /* Navbar Bawah Melayang */
     .navbar {
       position: fixed;
       bottom: 20px;
@@ -74,108 +83,152 @@
       transform: translateX(-50%);
       width: calc(100% - 40px);
       max-width: 400px;
-      background: rgba(108, 140, 174, 0.92);
-      backdrop-filter: blur(8px);
+      background: rgba(74, 111, 165, 0.92);
+      backdrop-filter: blur(10px);
       border-radius: 30px;
       display: flex;
       justify-content: space-around;
-      padding: 8px 6px;
+      padding: 10px 8px;
       z-index: 1000;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .nav-btn {
       color: rgba(255,255,255,0.75);
       text-decoration: none;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
       transition: all 0.3s ease;
     }
 
     .nav-btn i { font-size: 1.1rem; }
-    .nav-btn.active, .nav-btn:hover { color: #ffffff; }
+    .nav-btn.active, .nav-btn:hover { color: #ffffff; transform: translateY(-2px); }
 
-    /* Page Section */
+    /* Section Utama */
     .page-section {
       min-height: 100vh;
-      padding: 60px 22px 90px;
+      padding: 55px 20px 95px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       position: relative;
-      background-color: #f4f8fc;
+      background-color: var(--bg-color);
+      /* Background Watermark Pattern halus */
+      background-image: radial-gradient(rgba(108, 140, 174, 0.08) 1px, transparent 1px);
+      background-size: 20px 20px;
       border-bottom: 1px solid rgba(0,0,0,0.05);
       overflow: hidden;
     }
 
-    /* ORNAMEN BUNGA SVG INLINE */
-    .floral-svg-top {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 140px;
-      height: 140px;
-      pointer-events: none;
-      z-index: 1;
+    /* Frame/Bingkai Dalam Elegan */
+    .card-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 30px 18px;
+      border: 1px solid rgba(197, 155, 39, 0.35);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      z-index: 2;
     }
 
-    .floral-svg-bottom {
+    .card-frame::before {
+      content: '';
       position: absolute;
-      bottom: -10px;
-      right: -10px;
-      width: 140px;
-      height: 140px;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 1px dashed rgba(74, 111, 165, 0.25);
+      border-radius: 8px;
       pointer-events: none;
-      z-index: 1;
+    }
+
+    /* ORNAMEN BUNGA SVG BOTANICAL (INLINE HIGH QUALITY) */
+    .floral-corner {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .floral-top-left {
+      top: 0;
+      left: 0;
+    }
+
+    .floral-bottom-right {
+      bottom: 0;
+      right: 0;
       transform: rotate(180deg);
     }
 
-    .content-card {
-      position: relative;
-      z-index: 2;
-      width: 100%;
+    /* Divider Ornamen Tengah */
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .ornament-divider::before,
+    .ornament-divider::after {
+      content: '';
+      height: 1px;
+      width: 45px;
+      background: linear-gradient(to right, transparent, var(--gold-accent), transparent);
     }
 
     /* Tipografi */
-    .header-divider {
-      width: 60px;
-      height: 12px;
-      margin: 0 auto 10px;
-      background: url('https://api.iconify.design/lucide:sparkles.svg?color=%23cfa856') no-repeat center;
-    }
-
     .title-undangan {
       font-family: 'Alex Brush', cursive;
-      font-size: 3.2rem;
+      font-size: 3.4rem;
       color: var(--primary-blue);
       line-height: 1.1;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
     }
 
     .date-subtitle {
       font-size: 0.82rem;
       color: var(--text-muted);
       font-style: italic;
-      margin-bottom: 30px;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
     }
 
+    /* Monogram Inisial S & N */
     .monogram-wrapper {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 30px;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 25px;
       border-radius: 50%;
-      border: 1.5px solid var(--gold-accent);
+      border: 2px solid var(--gold-accent);
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
-      background: rgba(255, 255, 255, 0.4);
-      box-shadow: inset 0 0 15px rgba(207, 168, 86, 0.15);
+      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(240,244,248,0.6) 100%);
+      box-shadow: 0 6px 18px rgba(197, 155, 39, 0.2);
+    }
+
+    .monogram-wrapper::after {
+      content: '';
+      position: absolute;
+      width: 138px;
+      height: 138px;
+      border-radius: 50%;
+      border: 1px dashed var(--accent-blue);
     }
 
     .monogram-text {
@@ -183,85 +236,93 @@
       font-size: 2.8rem;
       color: var(--gold-accent);
       font-style: italic;
+      font-weight: 700;
       display: flex;
       align-items: center;
       gap: 6px;
+      z-index: 1;
     }
 
-    .monogram-text span { font-size: 1.8rem; }
+    .monogram-text span { font-size: 1.8rem; font-weight: 400; color: var(--primary-blue); }
 
     .recipient-title {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .recipient-name {
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       color: var(--text-dark);
-      font-weight: 500;
+      font-weight: 600;
+      background: rgba(108, 140, 174, 0.1);
+      padding: 6px 16px;
+      border-radius: 20px;
+      display: inline-block;
     }
 
     .arabic-bismillah {
       font-family: 'Aref Ruqaa', serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--primary-blue);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .opening-text {
       font-size: 0.78rem;
       line-height: 1.6;
       color: var(--text-muted);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .bride-name {
       font-family: 'Alex Brush', cursive;
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       color: var(--primary-blue);
-      margin: 4px 0;
+      margin: 4px 0 2px;
     }
 
     .bride-desc {
       font-size: 0.75rem;
       color: var(--text-muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .ampersand-symbol {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--gold-accent);
       font-style: italic;
-      margin: 4px 0;
+      margin: 2px 0;
     }
 
-    /* TANGGAL PRESISI DENGAN FLEXBOX */
+    /* FORMAT TANGGAL PRESISI DENGAN BORDER EMAS */
     .date-row-container {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      max-width: 320px;
-      margin: 18px auto 6px;
+      max-width: 300px;
+      margin: 16px auto 4px;
     }
 
     .date-side-box {
       flex: 1;
       text-align: center;
-      border-top: 1px solid var(--border-blue);
-      border-bottom: 1px solid var(--border-blue);
+      border-top: 1.5px solid var(--gold-accent);
+      border-bottom: 1.5px solid var(--gold-accent);
       padding: 6px 0;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--primary-blue);
       letter-spacing: 1px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .date-center-number {
-      font-size: 3rem;
-      font-weight: 600;
+      font-size: 3.2rem;
+      font-weight: 700;
       color: var(--primary-blue);
       line-height: 1;
       padding: 0 16px;
@@ -272,70 +333,83 @@
     .month-badge {
       font-size: 0.88rem;
       letter-spacing: 3px;
-      color: var(--primary-blue);
-      font-weight: 600;
-      margin-bottom: 15px;
+      color: var(--gold-accent);
+      font-weight: 700;
+      margin-bottom: 14px;
     }
 
     .location-box {
       font-size: 0.78rem;
       color: var(--text-dark);
-      background: rgba(176, 196, 222, 0.25);
-      padding: 8px 14px;
-      border-radius: 20px;
+      background: rgba(108, 140, 174, 0.12);
+      padding: 10px 16px;
+      border-radius: 12px;
       display: inline-block;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(108, 140, 174, 0.2);
     }
 
     .turut-mengundang-box {
-      margin-top: 15px;
+      margin-top: 12px;
       padding-top: 12px;
-      border-top: 1px dashed rgba(108, 140, 174, 0.3);
+      border-top: 1px dashed rgba(197, 155, 39, 0.4);
       font-size: 0.72rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .turut-mengundang-title {
       font-weight: 600;
       color: var(--primary-blue);
       margin-bottom: 4px;
+      letter-spacing: 0.5px;
     }
 
     .btn-maps {
-      display: inline-block;
-      background-color: #8da4c4;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--primary-blue));
       color: #ffffff;
-      padding: 10px 22px;
-      border-radius: 20px;
+      padding: 10px 24px;
+      border-radius: 25px;
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 500;
-      margin-top: 18px;
-      box-shadow: 0 4px 12px rgba(108, 140, 174, 0.3);
+      margin-top: 16px;
+      box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-maps:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(74, 111, 165, 0.4);
     }
 
     .map-frame {
       width: 100%;
-      height: 220px;
-      border-radius: 10px;
+      height: 200px;
+      border-radius: 12px;
       border: 1px solid var(--border-blue);
-      margin-top: 15px;
+      margin-top: 12px;
     }
   </style>
 </head>
 <body>
 
+  <!-- Audio Musik -->
   <audio id="bg-music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-romantic-piano-112199.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- Tombol Musik -->
   <div class="music-btn" onclick="toggleMusic()">
     <i class="fa-solid fa-music" id="music-icon"></i>
   </div>
 
   <div class="mobile-container">
 
+    <!-- Floating Navbar -->
     <nav class="navbar">
       <a href="#cover" class="nav-btn active"><i class="fa-solid fa-heart"></i><span>Cover</span></a>
       <a href="#akad" class="nav-btn"><i class="fa-solid fa-ring"></i><span>Akad</span></a>
@@ -343,29 +417,45 @@
       <a href="#lokasi" class="nav-btn"><i class="fa-solid fa-map-location-dot"></i><span>Peta</span></a>
     </nav>
 
-    <!-- KODE VECTOR SVG BUNGA LOKAL BUATAN -->
-    <svg class="floral-svg-top" viewBox="0 0 100 100" fill="none">
-      <path d="M0,0 C30,10 50,30 60,60 C40,50 20,40 0,0 Z" fill="#6c8cae" opacity="0.35"/>
-      <circle cx="20" cy="20" r="12" fill="#8da4c4" opacity="0.6"/>
-      <circle cx="35" cy="15" r="8" fill="#cfa856" opacity="0.7"/>
-      <circle cx="15" cy="35" r="9" fill="#b0c4de" opacity="0.8"/>
-      <path d="M0,0 Q40,10 25,45 Q10,20 0,0" fill="#6c8cae" opacity="0.5"/>
-      <path d="M0,30 Q30,30 45,0 Q20,15 0,30" fill="#a0b8d6" opacity="0.5"/>
-    </svg>
-
-    <svg class="floral-svg-bottom" viewBox="0 0 100 100" fill="none">
-      <path d="M0,0 C30,10 50,30 60,60 C40,50 20,40 0,0 Z" fill="#6c8cae" opacity="0.35"/>
-      <circle cx="20" cy="20" r="12" fill="#8da4c4" opacity="0.6"/>
-      <circle cx="35" cy="15" r="8" fill="#cfa856" opacity="0.7"/>
-      <circle cx="15" cy="35" r="9" fill="#b0c4de" opacity="0.8"/>
-      <path d="M0,0 Q40,10 25,45 Q10,20 0,0" fill="#6c8cae" opacity="0.5"/>
-      <path d="M0,30 Q30,30 45,0 Q20,15 0,30" fill="#a0b8d6" opacity="0.5"/>
-    </svg>
 
     <!-- 1. COVER / DEPAN -->
     <section id="cover" class="page-section">
-      <div class="content-card">
-        <div class="header-divider"></div>
+      <!-- Ornamen Bunga Botanical SVG Top Left -->
+      <svg class="floral-corner floral-top-left" viewBox="0 0 200 200" fill="none">
+        <path d="M10,0 C60,10 120,50 140,110 C100,80 50,70 10,0 Z" fill="#6c8cae" opacity="0.35"/>
+        <path d="M0,20 C40,40 80,100 80,160 C50,110 30,70 0,20 Z" fill="#4a6fa5" opacity="0.25"/>
+        <!-- Bunga Utama -->
+        <g transform="translate(45, 45)">
+          <circle cx="0" cy="0" r="16" fill="#c59b27" opacity="0.8"/>
+          <circle cx="-12" cy="-12" r="14" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="12" cy="-12" r="14" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="12" cy="12" r="14" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="-12" cy="12" r="14" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="0" cy="0" r="8" fill="#e6ca65"/>
+        </g>
+        <!-- Daun dan Ranting Emas -->
+        <path d="M0,80 Q50,80 90,40" stroke="#c59b27" stroke-width="2" fill="none" opacity="0.6"/>
+        <circle cx="90" cy="40" r="4" fill="#c59b27" opacity="0.8"/>
+        <circle cx="70" cy="60" r="3" fill="#c59b27" opacity="0.8"/>
+      </svg>
+
+      <!-- Ornamen Bunga Botanical SVG Bottom Right -->
+      <svg class="floral-corner floral-bottom-right" viewBox="0 0 200 200" fill="none">
+        <path d="M10,0 C60,10 120,50 140,110 C100,80 50,70 10,0 Z" fill="#6c8cae" opacity="0.35"/>
+        <path d="M0,20 C40,40 80,100 80,160 C50,110 30,70 0,20 Z" fill="#4a6fa5" opacity="0.25"/>
+        <g transform="translate(45, 45)">
+          <circle cx="0" cy="0" r="16" fill="#c59b27" opacity="0.8"/>
+          <circle cx="-12" cy="-12" r="14" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="12" cy="-12" r="14" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="12" cy="12" r="14" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="-12" cy="12" r="14" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="0" cy="0" r="8" fill="#e6ca65"/>
+        </g>
+        <path d="M0,80 Q50,80 90,40" stroke="#c59b27" stroke-width="2" fill="none" opacity="0.6"/>
+        <circle cx="90" cy="40" r="4" fill="#c59b27" opacity="0.8"/>
+      </svg>
+
+      <div class="card-frame">
         <div class="title-undangan">Undangan</div>
         <div class="date-subtitle">Ahad, 04 Oktober 2026</div>
 
@@ -373,35 +463,58 @@
           <div class="monogram-text">S <span>&</span> N</div>
         </div>
 
-        <div class="recipient-title">Kepada Yth.</div>
-        <div class="recipient-name">Bapak/Ibu/Saudara/i:</div>
+        <div class="ornament-divider">
+          <i class="fa-solid fa-heart" style="color: var(--gold-accent); font-size: 0.8rem;"></i>
+        </div>
+
+        <div style="margin-top: 15px;">
+          <div class="recipient-title">Kepada Yth.</div>
+          <div class="recipient-name">Bapak/Ibu/Saudara/i</div>
+        </div>
       </div>
     </section>
 
+
     <!-- 2. AKAD NIKAH -->
     <section id="akad" class="page-section">
-      <div class="content-card">
+      <svg class="floral-corner floral-top-left" viewBox="0 0 200 200" fill="none">
+        <path d="M10,0 C60,10 120,50 140,110 C100,80 50,70 10,0 Z" fill="#6c8cae" opacity="0.35"/>
+        <g transform="translate(45, 45)">
+          <circle cx="0" cy="0" r="14" fill="#c59b27" opacity="0.8"/>
+          <circle cx="-10" cy="-10" r="12" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="10" cy="-10" r="12" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="10" cy="10" r="12" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="-10" cy="10" r="12" fill="#8da4c4" opacity="0.7"/>
+        </g>
+      </svg>
+
+      <div class="card-frame">
         <div class="arabic-bismillah">بسم الله الرحمن الرحيم</div>
 
         <p class="opening-text" style="font-style: italic;">
           Assalamu'alaikum warahmatullahi wabarakatuh
         </p>
         <p class="opening-text">
-          Dengan ini kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada pernikahan putra dan putri kami:
+          Dengan memohon Rahmat dan Ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada pernikahan kami:
         </p>
 
         <div class="bride-name">H. Supriyadi, A.md</div>
-        <div class="bride-desc">putra pertama Bapak Badri (Alm) dan Ibu Siti Maryam</div>
+        <div class="bride-desc">Putra pertama Bapak Badri (Alm) & Ibu Siti Maryam</div>
 
         <div class="ampersand-symbol">&</div>
 
         <div class="bride-name">Neti Cahyati, S.Pd.I</div>
-        <div class="bride-desc">putri pertama Bapak Memen Wasman dan Ibu Titi Maryati</div>
+        <div class="bride-desc">Putri pertama Bapak Memen Wasman & Ibu Titi Maryati</div>
 
-        <p class="opening-text" style="margin-top: 15px; margin-bottom: 5px;">
-          Akad Nikah yang insya Allah akan dilaksanakan pada:
+        <div class="ornament-divider">
+          <i class="fa-solid fa-ring" style="color: var(--gold-accent); font-size: 0.8rem;"></i>
+        </div>
+
+        <p class="opening-text" style="margin-top: 10px; margin-bottom: 2px; font-weight: 500;">
+          Acara Akad Nikah dilaksanakan pada:
         </p>
 
+        <!-- Format Tanggal Presisi -->
         <div class="date-row-container">
           <div class="date-side-box">AHAD</div>
           <div class="date-center-number">04</div>
@@ -410,34 +523,43 @@
         <div class="month-badge">OKTOBER 2026</div>
 
         <div class="location-box">
+          <i class="fa-solid fa-location-dot" style="color: var(--primary-blue); margin-right: 4px;"></i>
           Dusun Pondoklombok Rt 04 Rw 09, Sidomulyo, Pangandaran
         </div>
-
-        <p class="opening-text" style="font-style: italic;">
-          Wassalamu'alaikum Warahmatullahi Wabarakatuh
-        </p>
 
         <div class="turut-mengundang-box">
           <div class="turut-mengundang-title">- Turut Mengundang -</div>
           Keluarga Besar Badri (Alm) - Banjar<br>
           Keluarga Besar Memen Wasman - Tasikmalaya<br>
           DPTD PKS Kab. Tasikmalaya - DPTD PKS Kota Banjar<br>
-          Keluarga Besar Yoso Rejo - Keluarga Besar MI Pondoklombok<br>
-          Keluarga Besar PD/PC Persis / PD/PC Persistri Pangandaran
+          Keluarga Besar Yoso Rejo - MI Pondoklombok<br>
+          PD/PC Persis / PD/PC Persistri Pangandaran
         </div>
       </div>
     </section>
 
+
     <!-- 3. RESEPSI -->
     <section id="resepsi" class="page-section">
-      <div class="content-card">
-        <p class="opening-text" style="font-style: italic;">
-          Assalamu'alaikum warahmatullahi wabarakatuh
-        </p>
-        <p class="opening-text">
-          Dengan memohon Rahmat dan Ridho Allah SWT kami bermaksud menyelenggarakan acara resepsi pernikahan putra-putri kami yang insya Allah akan diselenggarakan pada :
+      <svg class="floral-corner floral-bottom-right" viewBox="0 0 200 200" fill="none">
+        <path d="M10,0 C60,10 120,50 140,110 C100,80 50,70 10,0 Z" fill="#6c8cae" opacity="0.35"/>
+        <g transform="translate(45, 45)">
+          <circle cx="0" cy="0" r="14" fill="#c59b27" opacity="0.8"/>
+          <circle cx="-10" cy="-10" r="12" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="10" cy="-10" r="12" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="10" cy="10" r="12" fill="#8da4c4" opacity="0.7"/>
+          <circle cx="-10" cy="10" r="12" fill="#8da4c4" opacity="0.7"/>
+        </g>
+      </svg>
+
+      <div class="card-frame">
+        <div class="title-undangan" style="font-size: 2.8rem;">Resepsi Pernikahan</div>
+        
+        <p class="opening-text" style="margin-top: 10px;">
+          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu pada:
         </p>
 
+        <!-- Format Tanggal Presisi -->
         <div class="date-row-container">
           <div class="date-side-box">AHAD</div>
           <div class="date-center-number">04</div>
@@ -446,36 +568,42 @@
         <div class="month-badge">OKTOBER 2026</div>
 
         <div class="location-box">
+          <i class="fa-solid fa-house-chimney" style="color: var(--primary-blue); margin-right: 4px;"></i>
           Dusun Pondoklombok Rt 04 Rw 09, Sidomulyo, Pangandaran
         </div>
 
-        <p class="opening-text" style="margin-top: 10px;">
-          Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila bapak/ibu/saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai
+        <div class="ornament-divider">
+          <i class="fa-solid fa-hands-praying" style="color: var(--gold-accent); font-size: 0.8rem;"></i>
+        </div>
+
+        <p class="opening-text" style="font-style: italic; margin-top: 8px;">
+          Atas kehadiran dan doa restunya, kami ucapkan terima kasih.
         </p>
-        <p class="opening-text">
-          Atas kehadiran dan doa restunya kami ucapkan terimakasih
+        <p class="opening-text" style="font-style: italic;">
+          Wassalamu'alaikum Warahmatullahi Wabarakatuh
         </p>
 
-        <div style="margin-top: 20px;">
-          <p class="opening-text" style="font-weight: 500; color: var(--primary-blue); margin-bottom: 10px;">Kami yang Berbahagia,</p>
-          <div style="display: flex; justify-content: space-around; font-size: 0.75rem; color: var(--text-dark); line-height: 1.5;">
+        <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(108,140,174,0.15);">
+          <p class="opening-text" style="font-weight: 600; color: var(--primary-blue); margin-bottom: 8px;">Kami yang Berbahagia,</p>
+          <div style="display: flex; justify-content: space-around; font-size: 0.74rem; color: var(--text-dark); line-height: 1.4;">
             <div>
-              <strong>Kel. Besar Badri (Alm) &<br>Siti Maryam</strong>
+              <strong>Kel. Besar Badri (Alm)<br>& Siti Maryam</strong>
             </div>
             <div>
-              <strong>Kel. Besar Memen<br>Wasman & Titi Maryati</strong>
+              <strong>Kel. Besar Memen Wasman<br>& Titi Maryati</strong>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+
     <!-- 4. LOKASI MAPS -->
     <section id="lokasi" class="page-section">
-      <div class="content-card">
-        <div class="title-undangan" style="font-size: 2.2rem;">Lokasi Acara</div>
+      <div class="card-frame">
+        <div class="title-undangan" style="font-size: 2.6rem;">Peta Lokasi</div>
         <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px;">
-          Purbahayu, Pangandaran, West Java, Indonesia
+          Sidomulyo, Pangandaran, Jawa Barat
         </p>
 
         <iframe 
@@ -487,7 +615,7 @@
 
         <div>
           <a href="https://maps.app.goo.gl/BQEu44uxTvrUe2UJA" target="_blank" class="btn-maps">
-            Buka Lokasi via Google Maps
+            <i class="fa-solid fa-map-pin"></i> Buka Google Maps
           </a>
         </div>
       </div>
@@ -496,6 +624,7 @@
   </div>
 
   <script>
+    // Fitur Musik
     const music = document.getElementById("bg-music");
     const musicIcon = document.getElementById("music-icon");
     let isPlaying = false;
@@ -511,6 +640,7 @@
       isPlaying = !isPlaying;
     }
 
+    // Play musik pada interaksi pertama
     document.body.addEventListener('click', function() {
       if (!isPlaying) {
         music.play().then(() => {
@@ -520,6 +650,7 @@
       }
     }, { once: true });
 
+    // Active Navigation Highlight
     const sections = document.querySelectorAll('.page-section');
     const navBtns = document.querySelectorAll('.nav-btn');
 
