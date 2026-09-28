@@ -114,21 +114,21 @@
       overflow: hidden;
     }
 
-    /* Bunga Watercolor Sudut (Ganti Link Direct PNG) */
+    /* Vector Bunga Watercolor High-Res Direct */
     .floral-bg-top {
       position: absolute;
-      top: -15px;
-      left: -15px;
-      width: 180px;
+      top: -10px;
+      left: -10px;
+      width: 170px;
       pointer-events: none;
       z-index: 1;
     }
 
     .floral-bg-bottom {
       position: absolute;
-      bottom: -15px;
-      right: -15px;
-      width: 180px;
+      bottom: -10px;
+      right: -10px;
+      width: 170px;
       pointer-events: none;
       z-index: 1;
       transform: rotate(180deg);
@@ -240,10 +240,9 @@
       margin: 4px 0;
     }
 
-    /* POSISI TANGGAL DENGAN GRID (Memastikan 04 di Tengah-Tengah) */
-    .date-badge-grid {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
+    /* FORMAT TANGGAL PRESISI TENGAH (PERBAIKAN FLEXBOX & BORDER) */
+    .date-row-container {
+      display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
@@ -251,35 +250,26 @@
       margin: 18px auto 6px;
     }
 
-    .badge-day {
-      text-align: right;
+    .date-side-box {
+      flex: 1;
+      text-align: center;
       border-top: 1px solid var(--border-blue);
       border-bottom: 1px solid var(--border-blue);
-      padding: 5px 10px;
+      padding: 6px 0;
       font-size: 0.82rem;
       color: var(--primary-blue);
       letter-spacing: 1px;
       font-weight: 500;
     }
 
-    .badge-time {
-      text-align: left;
-      border-top: 1px solid var(--border-blue);
-      border-bottom: 1px solid var(--border-blue);
-      padding: 5px 10px;
-      font-size: 0.82rem;
-      color: var(--primary-blue);
-      letter-spacing: 1px;
-      font-weight: 500;
-    }
-
-    .badge-number {
+    .date-center-number {
       font-size: 3rem;
       font-weight: 600;
       color: var(--primary-blue);
       line-height: 1;
       padding: 0 16px;
       font-family: 'Cormorant Garamond', serif;
+      text-align: center;
     }
 
     .month-badge {
@@ -379,9 +369,9 @@
 
     <!-- 1. COVER / DEPAN -->
     <section id="cover" class="page-section">
-      <!-- Image Bunga PNG Transparent -->
-      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-bottom" alt="Floral Bottom">
+      <!-- Bunga Direct SVG Vector -->
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-bottom" alt="Floral Bottom">
 
       <div class="content-card">
         <div class="header-divider"></div>
@@ -400,7 +390,7 @@
 
     <!-- 2. AKAD NIKAH -->
     <section id="akad" class="page-section">
-      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-top" alt="Floral Top">
 
       <div class="content-card">
         <div class="arabic-bismillah">بسم الله الرحمن الرحيم</div>
@@ -424,11 +414,11 @@
           Akad Nikah yang insya Allah akan dilaksanakan pada:
         </p>
 
-        <!-- Dynamic Grid Tanggal Presisi Tengah -->
-        <div class="date-badge-grid">
-          <div class="badge-day">AHAD</div>
-          <div class="badge-number">04</div>
-          <div class="badge-time">09.00 WIB</div>
+        <!-- Format Tanggal Presisi 04 di Tengah -->
+        <div class="date-row-container">
+          <div class="date-side-box">AHAD</div>
+          <div class="date-center-number">04</div>
+          <div class="date-side-box">09.00 WIB</div>
         </div>
         <div class="month-badge">OKTOBER 2026</div>
 
@@ -454,8 +444,8 @@
 
     <!-- 3. RESEPSI -->
     <section id="resepsi" class="page-section">
-      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-bottom" alt="Floral Bottom">
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-bottom" alt="Floral Bottom">
 
       <div class="content-card">
         <p class="opening-text" style="font-style: italic;">
@@ -465,11 +455,11 @@
           Dengan memohon Rahmat dan Ridho Allah SWT kami bermaksud menyelenggarakan acara resepsi pernikahan putra-putri kami yang insya Allah akan diselenggarakan pada :
         </p>
 
-        <!-- Dynamic Grid Tanggal Presisi Tengah -->
-        <div class="date-badge-grid">
-          <div class="badge-day">AHAD</div>
-          <div class="badge-number">04</div>
-          <div class="badge-time">10.00 WIB</div>
+        <!-- Format Tanggal Presisi 04 di Tengah -->
+        <div class="date-row-container">
+          <div class="date-side-box">AHAD</div>
+          <div class="date-center-number">04</div>
+          <div class="date-side-box">10.00 WIB</div>
         </div>
         <div class="month-badge">OKTOBER 2026</div>
 
@@ -504,8 +494,8 @@
 
     <!-- 4. LOKASI MAPS -->
     <section id="lokasi" class="page-section">
-      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-top" alt="Floral Top">
-      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yN193YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9kdXN0eV9ibHVlX2Zsb3dlcl9fZjY0Nzg3ODMtYTBkYS00YWI2LWExOTQtMTRjOTY3YzllYjg5LnBuZw.png" class="floral-bg-bottom" alt="Floral Bottom">
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-top" alt="Floral Top">
+      <img src="https://cdni.iconscout.com/illustration/premium/thumb/blue-flower-corner-border-10887342-8722883.png" class="floral-bg-bottom" alt="Floral Bottom">
 
       <div class="content-card">
         <div class="title-undangan" style="font-size: 2.2rem;">Lokasi Acara</div>
@@ -547,7 +537,7 @@
       isPlaying = !isPlaying;
     }
 
-    // Auto Play saat interaksi pertama
+    // Auto Play saat klik pertama
     document.body.addEventListener('click', function() {
       if (!isPlaying) {
         music.play().then(() => {
@@ -557,7 +547,7 @@
       }
     }, { once: true });
 
-    // Highlight menu aktif saat di-scroll
+    // Highlight menu aktif
     const sections = document.querySelectorAll('.page-section');
     const navBtns = document.querySelectorAll('.nav-btn');
 
